@@ -13,7 +13,7 @@ module FormtasticBootstrap
         def date_input_html
           fragments.inject([]) do |arr,fragment|
             arr << fragment_input_html(fragment)
-           end.join.h
+           end.join.html_safe
         end
         
         def datetime_input_html
