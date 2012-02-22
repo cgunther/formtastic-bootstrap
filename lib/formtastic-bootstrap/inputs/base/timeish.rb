@@ -10,6 +10,11 @@ module FormtasticBootstrap
           end
         end
 
+        def date_input_html
+          fragments.inject([]) do |arr,fragment|
+            arr << fragment_input_html(fragment)
+           end.join.h
+           
         def datetime_input_html
           fragments.inject([]) do |arr,fragment|
             arr << " : " if fragment == :minute
