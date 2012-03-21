@@ -9,6 +9,7 @@ module FormtasticBootstrap
           {}.tap do |opts|
             opts[:for] ||= input_html_options[:id]
             opts[:class] = [opts[:class]]
+            opts[:class] << 'control-label'
           end
         end
         
