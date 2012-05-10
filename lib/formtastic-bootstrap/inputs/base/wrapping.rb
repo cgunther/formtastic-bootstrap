@@ -49,7 +49,7 @@ module FormtasticBootstrap
             else
               [opts[:class].to_s]
             end
-          opts[:class] << as
+          opts[:class] << "#{as}-wrapper"
           opts[:class] << "control-group"
           # opts[:class] << "input"
           opts[:class] << "error" if errors?

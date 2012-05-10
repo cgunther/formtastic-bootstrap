@@ -21,7 +21,7 @@ describe 'datetime input' do
       end)
     end
 
-    it_should_have_input_wrapper_with_class("datetime")
+    it_should_have_input_wrapper_with_class("datetime-wrapper")
     it_should_have_input_wrapper_with_class("control-group")
     it_should_have_input_wrapper_with_class(:stringish) # Decide about this.
     it_should_have_input_class_in_the_right_place
@@ -32,7 +32,7 @@ describe 'datetime input' do
     it_should_apply_error_logic_for_input_type(:datetime)
 
     it 'should have a legend and label with the label text inside the fieldset' do
-      output_buffer.should have_tag('form div.control-group.datetime label.control-label', /Publish at/)
+      output_buffer.should have_tag('form div.control-group.datetime-wrapper label.control-label', /Publish at/)
     end
 
     # it 'should associate the legend label with the first select' do
@@ -61,7 +61,7 @@ describe 'datetime input' do
     # end
 
     it 'should have two inputs' do
-      output_buffer.should have_tag('form div.control-group.datetime div.controls input', :count => 2)
+      output_buffer.should have_tag('form div.control-group.datetime-wrapper div.controls input', :count => 2)
     end
 
   end

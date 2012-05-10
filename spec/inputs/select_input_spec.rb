@@ -140,7 +140,7 @@ describe 'select input' do
       end)
     end
 
-    it_should_have_input_wrapper_with_class("select")
+    it_should_have_input_wrapper_with_class("select-wrapper")
     it_should_have_input_wrapper_with_class("control-group")
     it_should_have_input_class_in_the_right_place
     it_should_have_input_wrapper_with_id("post_author_input")
@@ -268,7 +268,7 @@ describe 'select input' do
       end)
     end
 
-    it_should_have_input_wrapper_with_class("select")
+    it_should_have_input_wrapper_with_class("select-wrapper")
     it_should_have_input_wrapper_with_id("post_author_input")
     it_should_have_label_with_text(/Author/)
     it_should_have_label_for('post_author_id')
@@ -318,7 +318,7 @@ describe 'select input' do
       end)
     end
 
-    it_should_have_input_wrapper_with_class("select")
+    it_should_have_input_wrapper_with_class("select-wrapper")
     it_should_have_input_wrapper_with_id("author_posts_input")
     it_should_have_label_with_text(/Post/)
     it_should_have_label_for('author_post_ids')
@@ -382,7 +382,7 @@ describe 'select input' do
       end)
     end
 
-    it_should_have_input_wrapper_with_class("select")
+    it_should_have_input_wrapper_with_class("select-wrapper")
     it_should_have_input_wrapper_with_id("post_authors_input")
     it_should_have_label_with_text(/Author/)
     it_should_have_label_for('post_author_ids')

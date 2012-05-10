@@ -122,8 +122,8 @@ describe 'FormtasticBootstrap::FormBuilder#fields_for' do
       output_buffer.should have_tag 'input#author_posts_attributes_0_id', :count => 1
     end
 
-    it "should render the hidden input inside an div.hidden" do
-      output_buffer.should have_tag 'div.hidden div.controls input#author_posts_attributes_0_id'
+    it "should render the hidden input inside an div.hidden-wrapper" do
+      output_buffer.should have_tag 'div.hidden-wrapper div.controls input#author_posts_attributes_0_id'
     end
   end
 

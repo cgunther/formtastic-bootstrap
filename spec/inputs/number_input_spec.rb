@@ -25,7 +25,7 @@ describe 'number input' do
       )
     end
 
-    it_should_have_input_wrapper_with_class(:number)
+    it_should_have_input_wrapper_with_class('number-wrapper')
     it_should_have_input_wrapper_with_class("control-group")
     it_should_have_input_wrapper_with_class(:numeric)
     it_should_have_input_wrapper_with_class(:stringish)

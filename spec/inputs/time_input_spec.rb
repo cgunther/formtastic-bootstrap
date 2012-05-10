@@ -68,7 +68,7 @@ describe 'time input' do
         end)
       end
 
-      it_should_have_input_wrapper_with_class("time")
+      it_should_have_input_wrapper_with_class("time-wrapper")
       it_should_have_input_wrapper_with_class("control-group")
       it_should_have_input_wrapper_with_class(:stringish)
       it_should_have_input_class_in_the_right_place
@@ -77,17 +77,17 @@ describe 'time input' do
       it_should_apply_error_logic_for_input_type(:time)
 
       it 'should have a legend and label with the label text inside the fieldset' do
-        output_buffer.should have_tag('form div.control-group.time label.control-label', /Publish at/)
+        output_buffer.should have_tag('form div.control-group.time-wrapper label.control-label', /Publish at/)
       end
 
       # TODO Is this right?
       it 'should (sort of) associate the label with the input' do
-        output_buffer.should have_tag('form div.control-group.time label.control-label[@for="post_publish_at"]')
-        output_buffer.should have_tag('form div.control-group.time div.controls input[@id="post_publish_at[time]"]')
+        output_buffer.should have_tag('form div.control-group.time-wrapper label.control-label[@for="post_publish_at"]')
+        output_buffer.should have_tag('form div.control-group.time-wrapper div.controls input[@id="post_publish_at[time]"]')
       end
 
       it 'should have an text input inside the div' do
-        output_buffer.should have_tag('form div.control-group.time div.controls input[@type="text"]')
+        output_buffer.should have_tag('form div.control-group.time-wrapper div.controls input[@type="text"]')
       end
 
       # it 'should have five labels for hour and minute' do

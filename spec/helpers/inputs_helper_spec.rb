@@ -353,19 +353,19 @@ describe 'Formtastic::FormBuilder#inputs' do
       end
 
       it 'should render a string list item for title' do
-        output_buffer.should have_tag('form > fieldset.inputs > div.control-group.string')
+        output_buffer.should have_tag('form > fieldset.inputs > div.control-group.string-wrapper')
       end
 
       it 'should render a text list item for body' do
-        output_buffer.should have_tag('form > fieldset.inputs > div.control-group.text')
+        output_buffer.should have_tag('form > fieldset.inputs > div.control-group.text-wrapper')
       end
 
       it 'should render a select list item for author_id' do
-        output_buffer.should have_tag('form > fieldset.inputs > div.control-group.select', :count => 1)
+        output_buffer.should have_tag('form > fieldset.inputs > div.control-group.select-wrapper', :count => 1)
       end
 
       it 'should not render timestamps inputs by default' do
-        output_buffer.should_not have_tag('form > fieldset.inputs > div.control-group.datetime')
+        output_buffer.should_not have_tag('form > fieldset.inputs > div.control-group.datetime-wrapper')
       end
 
       context "with a polymorphic association" do
@@ -398,8 +398,8 @@ describe 'Formtastic::FormBuilder#inputs' do
           end)
 
           output_buffer.should have_tag('form > fieldset.inputs > div.control-group', :count => 2)
-          output_buffer.should have_tag('form > fieldset.inputs > div.control-group.string')
-          output_buffer.should have_tag('form > fieldset.inputs > div.control-group.text')
+          output_buffer.should have_tag('form > fieldset.inputs > div.control-group.string-wrapper')
+          output_buffer.should have_tag('form > fieldset.inputs > div.control-group.text-wrapper')
         end
       end
 
@@ -409,7 +409,7 @@ describe 'Formtastic::FormBuilder#inputs' do
             concat(builder.inputs(:title, :body))
           end)
 
-          output_buffer.should have_tag('form > fieldset.inputs > div.control-group.string', :count => 2)
+          output_buffer.should have_tag('form > fieldset.inputs > div.control-group.string-wrapper', :count => 2)
         end
       end
 

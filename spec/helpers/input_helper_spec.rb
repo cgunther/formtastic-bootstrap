@@ -382,7 +382,7 @@ describe 'FormtasticBootstrap::FormBuilder#input' do
           concat(semantic_form_for(:project, :url => 'http://test.host') do |builder|
             concat(builder.input(:anything))
           end)
-          output_buffer.should have_tag('form div.control-group.string')
+          output_buffer.should have_tag('form div.control-group.string-wrapper')
         end
 
         it 'should default to password for forms without objects if column is password' do
@@ -391,7 +391,7 @@ describe 'FormtasticBootstrap::FormBuilder#input' do
             concat(builder.input(:password_confirmation))
             concat(builder.input(:confirm_password))
           end)
-          output_buffer.should have_tag('form div.control-group.password', :count => 3)
+          output_buffer.should have_tag('form div.control-group.password-wrapper', :count => 3)
         end
 
         it 'should default to a string for methods on objects that don\'t respond to "column_for_attribute"' do
@@ -830,7 +830,7 @@ describe 'FormtasticBootstrap::FormBuilder#input' do
           concat(semantic_form_for(@new_post) do |builder|
             concat(builder.input(:title, :wrapper_html => {:class => :another_class}, :required => true))
           end)
-          output_buffer.should have_tag("form div.control-group.string")
+          output_buffer.should have_tag("form div.control-group.string-wrapper")
           output_buffer.should have_tag("form div.control-group.required")
           output_buffer.should have_tag("form div.control-group.another_class")
         end
@@ -839,7 +839,7 @@ describe 'FormtasticBootstrap::FormBuilder#input' do
           concat(semantic_form_for(@new_post) do |builder|
             concat(builder.input(:title, :wrapper_html => {:class => [ :my_class, :another_class ]}))
           end)
-          output_buffer.should have_tag("form div.control-group.string")
+          output_buffer.should have_tag("form div.control-group.string-wrapper")
           output_buffer.should have_tag("form div.control-group.my_class")
           output_buffer.should have_tag("form div.control-group.another_class")
         end
@@ -893,7 +893,7 @@ describe 'FormtasticBootstrap::FormBuilder#input' do
         concat(builder.input(:title, my_options))
         concat(builder.input(:publish_at, my_options))
       end)
-      output_buffer.should have_tag 'div.control-group.string', :count => 2
+      output_buffer.should have_tag 'div.control-group.string-wrapper', :count => 2
     end
 
   end

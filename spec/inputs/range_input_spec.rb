@@ -18,7 +18,7 @@ describe 'range input' do
       end)
     end
 
-    it_should_have_input_wrapper_with_class(:range)
+    it_should_have_input_wrapper_with_class('range-wrapper')
     it_should_have_input_wrapper_with_class("control-group")
     it_should_have_input_wrapper_with_class(:numeric)
     it_should_have_input_wrapper_with_class(:stringish)
