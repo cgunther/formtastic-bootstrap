@@ -18,6 +18,7 @@ require "formtastic-bootstrap/inputs/text_input"
 require "formtastic-bootstrap/inputs/time_input"
 require "formtastic-bootstrap/inputs/time_zone_input"
 require "formtastic-bootstrap/inputs/url_input"
+require "formtastic-bootstrap/inputs/country_input"
 
 module FormtasticBootstrap
   module Inputs

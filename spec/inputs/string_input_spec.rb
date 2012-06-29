@@ -222,6 +222,24 @@ describe 'string input' do
       output_buffer.should have_tag('form div.control-group div.controls div.input-prepend input[name="user[handle]"]')
     end
   end
+  
+  describe "with string appended", :now => true do
+
+    before do
+      concat(semantic_form_for(:user) do |builder|
+        concat(builder.input(:handle, :as => :string, :append => '@'))
+      end)
+    end
+
+    it "should generate span with desired append string" do
+      output_buffer.should have_tag('form div.control-group div.controls div.input-append span.add-on', '@')
+    end
+
+    it "should wrap input in div.input-append" do
+      output_buffer.should have_tag('form div.control-group div.controls div.input-append input[name="user[handle]"]')
+    end
+  end
+  
 
 end
 

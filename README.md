@@ -1,14 +1,13 @@
 # Formtastic Bootstrap
 
-A [Formtastic](https://github.com/justinfrench/formtastic) form builder that creates markup suitable for the [Twitter Bootstrap](http://twitter.github.com/bootstrap/) framework.  In theory, it should just work.  Two great tastes in one!
-
-You can follow [FormBoot on twitter](http://twitter.com/FormBoot) for update announcements and other relevant info.
+A [Formtastic](https://github.com/justinfrench/formtastic) form builder that creates markup suitable for the [Twitter Bootstrap](http://twitter.github.com/bootstrap/) framework.
 
 ## Getting Started
 
 ### Dependencies
 
-Formtastic Bootstrap has only been tested with Ruby 1.9.2, Rails 3.1, Formtastic 2.0 and Twitter Bootstrap 1.3.
+ * Formtastic 2.1+
+ * Bootstrap 2.0+
 
 #### Installation
 
@@ -16,7 +15,7 @@ Install the gem with
 
     gem install formtastic-bootstrap
 
-Or add it to your Gemfile:
+Or add it to your Gemfile (*note*: must be included after Formtastic):
 
     gem 'formtastic-bootstrap'
 
@@ -34,66 +33,70 @@ Add the following line to the top of your <tt>application.css</tt> file:
     # app/assets/stylesheets/application.css
     *= require formtastic-bootstrap
 
-Make sure you've already downloaded and installed Formtastic!
-
 
 ## Formtastic vs. Formtastic Bootstrap
 
 
 ### Overview
 
-In general, Formtastic creates very verbose HTML whereas Bootstrap expects simpler HTML.  Every attempt has been
-made to generate the HTML expected by Bootstrap while still generating the rich HTML provided by Formtastic.  Here's a pretty typical (simplified) example of what Formtastic generates and what Formtastic Bootstrap generates.
+In general, Formtastic creates very verbose HTML whereas Bootstrap expects simpler HTML. Every attempt has been
+made to generate the HTML expected by Bootstrap while still generating the rich HTML provided by Formtastic. Here's a pretty typical (simplified) example of what Formtastic generates and what Formtastic Bootstrap generates:
 
 #### ERB
 
-    <%= semantic_form_for @post do |f| %>
-      <%= f.semantic_errors %>
-      <%= f.inputs do %>
-        <%= f.input :title, :hint => "This is the title!" %>
-      <% end %>
-      <%= f.buttons do %>
-        <%= f.commit_button %>
-      <% end %>
-    <% end %>
+```html+erb
+<%= semantic_form_for @post do |f| %>
+  <%= f.semantic_errors %>
+  <%= f.inputs do %>
+    <%= f.input :title, :hint => "This is the title!" %>
+  <% end %>
+  <%= f.buttons do %>
+    <%= f.commit_button %>
+  <% end %>
+<% end %>
+```
 
 #### Formtastic
 
-    <form accept-charset="UTF-8" action="/posts" class="formtastic post" id="new_post" method="post">
-      <fieldset class="inputs">
-        <ol>
-          <li class="string input optional stringish" id="post_title_input">
-            <label class=" label" for="post_title">Title</label>
-            <input id="post_title" maxlength="255" name="post[title]" type="text" value="" />
-            <p class="inline-hints">This is the title!</p>
-          </li>
-        </ol>
-      </fieldset>
-      <fieldset class="buttons">
-        <ol>
-          <li class="commit button">
-            <input class="create" name="commit" type="submit" value="Create Post" />
-          </li>
-        </ol>
-      </fieldset>
-    </form>
+```html
+<form accept-charset="UTF-8" action="/posts" class="formtastic post" id="new_post" method="post">
+  <fieldset class="inputs">
+    <ol>
+      <li class="string input optional stringish" id="post_title_input">
+        <label class=" label" for="post_title">Title</label>
+        <input id="post_title" maxlength="255" name="post[title]" type="text" value="" />
+        <p class="inline-hints">This is the title!</p>
+      </li>
+    </ol>
+  </fieldset>
+  <fieldset class="buttons">
+    <ol>
+      <li class="commit button">
+        <input class="create" name="commit" type="submit" value="Create Post" />
+      </li>
+    </ol>
+  </fieldset>
+</form>
+```
 
 #### Formtastic Bootstrap
 
-    <form accept-charset="UTF-8" action="/posts" class="formtastic post" id="new_post" method="post">
-      <fieldset class="inputs">
-        <div class="string clearfix optional stringish" id="post_title_input">
-          <label class="" for="post_title">Title</label>
-          <div class="input">
-            <input id="post_title" maxlength="255" name="post[title]" type="text" value="" />
-            <span class="help-inline">This is the title!</span>
-          </div>
-        </div>
-      </fieldset>
-      <div class="actions">
-        <input class="btn create commit" name="commit" type="submit" value="Create Post" />
+```html
+<form accept-charset="UTF-8" action="/posts" class="formtastic post" id="new_post" method="post">
+  <fieldset class="inputs">
+    <div class="string clearfix optional stringish" id="post_title_input">
+      <label class="" for="post_title">Title</label>
+      <div class="input">
+        <input id="post_title" maxlength="255" name="post[title]" type="text" value="" />
+        <span class="help-inline">This is the title!</span>
       </div>
-    </form>
+    </div>
+  </fieldset>
+  <div class="actions">
+    <input class="btn create commit" name="commit" type="submit" value="Create Post" />
+  </div>
+</form>
+```
 
 ### Major Difference in Behavior
 
@@ -107,7 +110,7 @@ made to generate the HTML expected by Bootstrap while still generating the rich 
 
 Bootstrap is somewhat incomplete, and in a few cases an inference needed to be drawn to determine a course of action.  If you disagree with any of these choices, feel free to let me know.
 
-The gem also provides some "shim" CSS where Bootstrap is missing styles provided Formtastic.
+The gem also provides some "shim" CSS where Bootstrap is missing styles provided Formtastic. **NOTE:** The Twitter Bootstrap CSS is not included.
 
 ### Other
 
@@ -126,25 +129,28 @@ In particular:
 
 Contributions are welcome!
 
-* Formtastic's <tt>:country</tt> has not yet been implemented.
-* Twitter Bootstrap's Date Range, Prepend Checkbox and Appended Checkbox controls have not yet been implemented.
+* Twitter Bootstrap's Date Range, Prepend *Checkbox* and Appended *Checkbox* controls have not yet been implemented.
 
 ## Usage
 
-#### Prepended Text
-To create a Prepended Text field, use the ```:prepend``` option.  This works on any text field input type, like ```:url```, ```:search```, and of course ```:string```
+#### Prepended or Appended Text
 
-    <%= semantic_form_for @user do |f| %>
-      <%= f.inputs do %>
-        <%= f.input :handle, :prepend => '@' %>
-      <% end %>
-    <% end %>
+To create a Prepended or Appended Text field, use the <tt>:prepend</tt> or <tt>:append</tt> option, respectively. This works on any text field input type, like <tt>:url</tt>, <tt>:search</tt>, and of course <tt>:string</tt>. Prepend and appand can be combined to wrap an input:
+
+```html+erb
+<%= semantic_form_for @user do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :handle, :prepend => '@' %>
+    <%= f.input :dollars, :prepend => '$', :append => '.00' %>
+  <% end %>
+<% end %>
+```
 
 ## Contributing
  
 ### Contributors
 
-A big thank you [to all contributors](https://github.com/mjbellantoni/formtastic-bootstrap/contributors)!
+A big thank you [to all contributors](./contributors)!
 
 ### Submitting Issues
 
@@ -169,7 +175,6 @@ If you're filing a bug, thank you!  Secondly, in the report please include:
 
 * Field Types
  * Basic Formtastic
-   * :country
    * :time_zone
  * Fancy Bootstrap Fields
    * Date Range
